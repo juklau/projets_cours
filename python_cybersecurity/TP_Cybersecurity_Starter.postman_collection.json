@@ -1,0 +1,106 @@
+{
+  "info": {
+    "name": "TP Cybers\u00e9curit\u00e9 - D\u00e9mo",
+    "_postman_id": "tp-cyber-postman-demo",
+    "description": "Collection de requ\u00eates Postman pour illustrer les failles de s\u00e9curit\u00e9 de l'application Flask",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Injection SQL (GET /?search=...)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/?search=' OR 1=1 --",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            ""
+          ],
+          "query": [
+            {
+              "key": "search",
+              "value": "' OR 1=1 --"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Login vuln\u00e9rable (POST /login)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "username",
+              "value": "admin"
+            },
+            {
+              "key": "password",
+              "value": "admin123"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:5000/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "login"
+          ]
+        }
+      }
+    },
+    {
+      "name": "XSS (POST /comments)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "username",
+              "value": "attacker"
+            },
+            {
+              "key": "content",
+              "value": "<script>alert('XSS')</script>"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:5000/comments",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "comments"
+          ]
+        }
+      }
+    }
+  ]
+}
