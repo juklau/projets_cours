@@ -1,0 +1,34 @@
+
+h1{
+    position: relative;
+    width: 100%;
+    min-height: 350px;
+    object-fit: cover;
+    object-position: center;
+    background-image: url(/Meteo_API/image/meteo.jpg);
+    background-repeat: no-repeat;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+    margin-bottom: 50px;
+
+    /* afin d'image d'arrière-plan soit au centre et fixe sa taille quelle que soit la modification de la taille du div:
+    bon pour les petites, grandes, tailles normales, */
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+}
+
+.card:hover{
+    background-color: rgb(230, 214, 214);
+}
+
+#sunrise,
+#sunset{
+    width: 35px;
+    height: 35px;
+}
